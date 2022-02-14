@@ -5,11 +5,7 @@ SYSLIBROOT	:= /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platfo
 
 all : setup $(PROG_NAME) Makefile finish
 
-setup : clear announce build .gitignore
-
-.PHONY : clear
-clear : 
-	clear
+setup : announce build .gitignore
 
 .PHONY : announce
 announce : 

@@ -29,6 +29,9 @@
                 "kind": "build",
                 "isDefault": true
             },
+            "presentation": {
+                "clear": true
+            },
             "detail": "Build using local Makefile"
         },
         {
@@ -42,6 +45,22 @@
                 "kind": "other"
             },
             "detail": "open Tower git GUI.",
+            "problemMatcher": []
+        },
+        {
+            "type": "process",
+            "label": "hopper",
+            "command": "hopperv4",
+            "args": [
+                "-a",
+                "-l", "Mach-O",
+                "--aarch64",
+                "-e","${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "other"
+            },
+            "detail": "open Hopper Disassembler",
             "problemMatcher": []
         }
     ]
