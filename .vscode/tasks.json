@@ -30,6 +30,19 @@
                 "isDefault": true
             },
             "detail": "Build using local Makefile"
+        },
+        {
+            "type": "process",
+            "label": "Tower",
+            "command": "/Applications/Tower.app/Contents/MacOS/gittower",
+            "args": [
+                "${workspaceFolder}"
+            ],
+            "group": {
+                "kind": "other"
+            },
+            "detail": "open Tower git GUI.",
+            "problemMatcher": []
         }
     ]
 }
