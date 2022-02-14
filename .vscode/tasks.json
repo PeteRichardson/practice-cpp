@@ -4,32 +4,32 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: clang++ build active file",
-            "command": "/usr/bin/clang++",
+            "type": "shell",
+            "label": "clean",
+            "command": "make",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "-arch",
-                "arm64",
-                "-std=c++20",
-                "-lSystem",
-                "-lc++",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "clean"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
+            "group": {
+                "kind": "build"
+            },
+            "detail": "clean current project"
+        },
+        {
+            "type": "shell",
+            "label": "make",
+            "command": "make",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "compiler: /usr/bin/clang++"
+            "detail": "Build using local Makefile"
         }
     ]
 }

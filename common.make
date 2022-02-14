@@ -6,6 +6,7 @@ SYSLIBROOT	:= /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platfo
 all : setup $(PROG_NAME) Makefile
 
 setup :
+	clear
 	$(info # Building $(PROG_NAME) using sources $(SOURCES))
 	@mkdir -p build
 
@@ -25,5 +26,5 @@ $(BUILDDIR)/%.o : %.cpp
 
 clean :
 	$(info # Cleaning)
-	@rm -f $(PROG_NAME)
-	@rm -rf build ${PROG_NAME}.dsym
+	rm -f $(PROG_NAME)
+	rm -rf build/ ${PROG_NAME}.dsym/
