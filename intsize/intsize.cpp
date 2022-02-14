@@ -9,8 +9,7 @@ int main (int argc, char**argv) {
 
     initscr();
     printw("Hello, World!");
-    std::cout << "x = " << x << std::endl;
+    cout << "x = " << x << endl;
     getch();
     endwin();
-    
 }
