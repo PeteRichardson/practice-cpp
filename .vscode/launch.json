@@ -9,7 +9,7 @@
             "type": "lldb",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["cmdline arg"],
+            "args": ["foo.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
