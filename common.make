@@ -1,5 +1,5 @@
 CXXFLAGS=-c -g -O0 -std=c++20 -I../common
-SOURCE_FILES=\
+SOURCE_FILES ?= \
     $(PROG_NAME).cpp \
     utils.cpp
 
