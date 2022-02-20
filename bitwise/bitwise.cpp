@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     std::cout << "value      = " << Bits{value} << std::endl;
 
     auto mask { 0xFFULL };
-    for (auto byte {1}; byte < 9; byte++ ) {
+    for (auto byte {1}; byte <= 8; byte++ ) {
         // print mask bits with ' 's instead of '0's.
         std::string mask_str { Bits{mask}.to_string() };
         std::replace(mask_str.begin(), mask_str.end(), '0', ' ');
