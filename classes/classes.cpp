@@ -7,21 +7,19 @@ public:
     string name {};
     unsigned int age {};
     char gender {};
-private:
-    string ssNumber {};
 
-public:
     Person(string name, unsigned int age, char gender, string ssNumber);
     Person() {};
     string GetSSNumber();
     static string ClassName();
+
+private:
+    string ssNumber {};
 };
 
-Person::Person(string name, unsigned int age, char gender, string ssNumber) {
-    this->name = name;
-    this->age = age;
-    this->gender = gender;
-    this->ssNumber = ssNumber;
+Person::Person(string name, unsigned int age, char gender, string ssNumber) 
+    : name{name}, age{age}, gender{gender}, ssNumber{ssNumber} {
+    cout << "Constructor called for " << this->name << endl;
 }
 
 string Person::GetSSNumber() {
