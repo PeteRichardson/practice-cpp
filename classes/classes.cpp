@@ -4,7 +4,11 @@
 using std::cout, std::endl, std::string;
 
 int main(int argc, char** argv) {
-    auto pete { Person("Peter", 56, 'M', "123-45-6789") };
-    cout << pete.GetSSNumber() << endl;
+    if (argc != 2) {
+        cout << "# usage: classes <person_name>" << endl;
+        exit(1);
+    }
+    auto entity { Person(argv[1]) };
+    cout << entity.GetSSNumber() << endl;
     cout << Person::ClassName() << endl;
 }

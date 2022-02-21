@@ -7,17 +7,18 @@ using std::string;
 
 class Person {
 public:
-    string name {};
-    unsigned int age {};
-    char gender {};
+    string name_ {};
+    unsigned int age_ {};
+    char gender_ {};
 
     Person(string name, unsigned int age, char gender, string ssNumber);
+    Person(string name);
     Person() {};
     string GetSSNumber();
     static string ClassName();
 
 private:
-    string ssNumber {};
+    string ssNumber_ {};
 };
 
 #endif
