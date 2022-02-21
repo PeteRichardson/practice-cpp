@@ -20,6 +20,31 @@ double BankAccount::setBalance(double new_balance) {
     return balance_;
 }
 
+double BankAccount::deposit(double amount) {   
+    if (amount < 0.0) {
+        cout << "# Error: deposit must be a positive number.  You deposited " << amount << ".   Transaction skipped." << endl;
+    } else {
+        balance_ += amount;
+        cout << "# Deposited $" << amount << " into account #" << account_number_ << ".  New balance = $" << balance_ << "." << endl;
+    }
+    return balance_;
+}
+
+double BankAccount::withdraw(double amount) {   
+    if (amount < 0.0) {
+        cout << "# Error: withdrawal amount must be a positive number.  You requested " << amount << ".   Transaction skipped." << endl;
+        return balance_;
+    }
+    if (amount > balance_) {
+        cout << "# Error: Insufficient funds. You requested $" << amount << ", but there is only $" << balance_ << " in your account.  Transaction skipped." << endl;
+        return balance_;
+    }
+    balance_ -= amount;
+    cout << "# Withdrew $" << amount << " from account #" << account_number_ << ".  New balance = $" << balance_ << "." << endl;
+
+    return balance_;
+}
+
 std::ostream& operator<< (std::ostream &out, BankAccount const& account) {
     out << account.owner_name_ << "'s account has a balance of $" << account.getBalance() << "."; 
     return out;
