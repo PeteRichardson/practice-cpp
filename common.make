@@ -1,12 +1,12 @@
 CXXFLAGS=-c -g -O0 -std=c++20 -I../common
 SOURCE_FILES ?= \
-    $(PROG_NAME).cpp \
-    utils.cpp
+    $(PROG_NAME).cc \
+    utils.cc
 
-VPATH=%.cpp ../common
+VPATH=%.cc ../common
 
 BUILDDIR := build
-OBJECT_FILES     = $(SOURCE_FILES:%.cpp=$(BUILDDIR)/%.o)
+OBJECT_FILES     = $(SOURCE_FILES:%.cc=$(BUILDDIR)/%.o)
 
 SYSLIBROOT	:= /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 LDFLAGS= \
@@ -36,6 +36,6 @@ $(BUILDDIR) :
 $(PROG_NAME) : $(OBJECT_FILES)
 	$(LD) $(LDFLAGS)  -o $@ $^
 
-$(OBJECT_FILES): $(BUILDDIR)/%.o: %.cpp
+$(OBJECT_FILES): $(BUILDDIR)/%.o: %.cc
 	$(CXX) $(CXXFLAGS) -o $@ $<
 

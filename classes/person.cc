@@ -1,4 +1,4 @@
-#include "Person.h"
+#include "person.h"
 
 #include <iostream>
 using std::cout, std::endl, std::string;

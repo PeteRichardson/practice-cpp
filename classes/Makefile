@@ -1,5 +1,5 @@
 PROG_NAME := classes
 
-SOURCE_FILES= $(PROG_NAME).cpp Person.cpp
+SOURCE_FILES= $(PROG_NAME).cc person.cc
 
 include ../common.make

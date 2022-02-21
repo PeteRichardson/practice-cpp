@@ -13,9 +13,7 @@
             "options": {
                 "cwd": "${fileDirname}"
             },
-            "group": {
-                "kind": "build"
-            },
+            "group": "build",
             "detail": "clean current project"
         },
         {
@@ -41,9 +39,7 @@
             "args": [
                 "${workspaceFolder}"
             ],
-            "group": {
-                "kind": "other"
-            },
+            "group": "none",
             "detail": "open Tower git GUI.",
             "problemMatcher": []
         },
@@ -57,9 +53,7 @@
                 "--aarch64",
                 "-e","${fileDirname}/${fileBasenameNoExtension}"
             ],
-            "group": {
-                "kind": "other"
-            },
+            "group": "none",
             "detail": "open Hopper Disassembler",
             "problemMatcher": []
         }
