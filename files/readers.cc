@@ -16,7 +16,7 @@ void readlines(std::ifstream &file) {
 void readtokens(std::ifstream &file) {
     // METHOD 2:  using istream_iterator<std::string>
     cout << "# METHOD 2: Reading tokens using std::istream_iterator<std::string>:" << endl;
-    std::istream_iterator<std::string> begin(file), end;
+    std::istream_iterator<string> begin(file), end;
     std::for_each(begin, end, [&](string token){ 
         cout << token << endl;
     });

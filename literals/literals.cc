@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+using std::cout, std::endl, std::string;
 
 struct Person {
     string name {};

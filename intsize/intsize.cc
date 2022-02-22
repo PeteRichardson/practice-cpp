@@ -2,7 +2,7 @@
 #include <ostream>
 #include <curses.h>
 
-using namespace std;
+using std::cout, std::endl;
 
 int main (int argc, char**argv) {
     short x {32767};

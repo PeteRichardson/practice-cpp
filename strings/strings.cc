@@ -1,6 +1,7 @@
 #include <iostream>
+#include <string>
 
-using namespace std;
+using std::cout, std::endl, std::string;
 
 void my_str_function(string str) {
     cout << str << " uses my_str_function(string)" << endl;
