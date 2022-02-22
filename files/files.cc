@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <thread>
+
 #include "readers.h"
+#include "utils.h"
 
 using std::cout, std::endl, std::string;
 
@@ -9,6 +12,7 @@ int main (int argc, char** argv) {
         cout << "# usage: files <filename>" << endl;
         return 1;
     }
+    Timer clock;
 
     string filename {argv[1]};
     std::ifstream file(filename);
@@ -17,13 +21,19 @@ int main (int argc, char** argv) {
         return 2;
     }
 
+    clock.tick();
     readlines(file);
+    clock.tock();
+    cout << "# Runtime: " << clock.duration().count() << "ms" << endl;
 
     cout << endl;
     file.clear();  // need to reset the stream before METHOD 2
     file.seekg(0);
 
+    clock.tick();
     readtokens(file);
+    clock.tock();
+    cout << "# Runtime: " << clock.duration().count() << "ms" << endl;
 
     file.close();
 

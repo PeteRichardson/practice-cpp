@@ -1,16 +1,19 @@
 #include <iostream>
 #include <string>
+#include <thread>
+
+#include "utils.h"
 
 using std::cout, std::endl, std::string;
 
 int main(int argc, char** argv) {
-    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
-    start = std::chrono::high_resolution_clock::now();
+
+    Timer clock;
+    clock.tick();
 
     cout << "Hello, World!" << endl;
+    std::this_thread::sleep_for(std::chrono::seconds{2});
 
-    end = std::chrono::high_resolution_clock::now();
-    const std::chrono::duration<double> elapsed_time( end - start );
-    const double seconds( elapsed_time.count() );
-    cout << "# Runtime: " << seconds << "s" << endl;
+    clock.tock();
+    cout << "# Runtime: " << clock.duration().count() << "ms" << endl;
 }
