@@ -5,6 +5,3 @@ project(${project_dir})
 
 add_executable(${CMAKE_PROJECT_NAME} ${CMAKE_PROJECT_NAME}.cc)
 target_compile_features(${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
-target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
-                           "${PROJECT_DIR}../common"
-                           )
