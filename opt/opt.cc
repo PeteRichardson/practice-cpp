@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <deque>
 
 using std::cout, std::endl, std::string;
 
 int main(int argc, char** argv) {
-    std::vector<int> coll {};
+    std::deque<int> coll {};
     for (int i=24; i<=30; i++) {
-        coll.push_back(i);
+        coll.push_front(i);
     }
 
     for (int j=0; j<coll.size(); j++) {
