@@ -6,9 +6,9 @@
         {
             "type": "shell",
             "label": "clean",
-            "command": "make",
+            "command": "source",
             "args": [
-                "clean"
+                "../bin/clean"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -18,8 +18,11 @@
         },
         {
             "type": "shell",
-            "label": "make",
-            "command": "make",
+            "label": "build",
+            "command": "source",
+            "args": [
+                "../bin/build"
+            ],
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -30,32 +33,7 @@
             "presentation": {
                 "clear": true
             },
-            "detail": "Build using local Makefile"
+            "detail": "Build using cmake"
         },
-        {
-            "type": "process",
-            "label": "Tower",
-            "command": "/Applications/Tower.app/Contents/MacOS/gittower",
-            "args": [
-                "${workspaceFolder}"
-            ],
-            "group": "none",
-            "detail": "open Tower git GUI.",
-            "problemMatcher": []
-        },
-        {
-            "type": "process",
-            "label": "hopper",
-            "command": "hopperv4",
-            "args": [
-                "-a",
-                "-l", "Mach-O",
-                "--aarch64",
-                "-e","${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "group": "none",
-            "detail": "open Hopper Disassembler",
-            "problemMatcher": []
-        }
     ]
 }
