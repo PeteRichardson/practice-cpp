@@ -5,23 +5,12 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "clean",
-            "command": "source",
-            "args": [
-                "../bin/clean"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": "build",
-            "detail": "clean current project"
-        },
-        {
-            "type": "shell",
             "label": "build",
-            "command": "source",
+            "command": "cmake",
             "args": [
-                "../bin/build"
+                "--build",
+                "${fileDirname}/build",
+                "-j", "8"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -34,6 +23,39 @@
                 "clear": true
             },
             "detail": "Build using cmake"
+        },
+        {
+            "type": "shell",
+            "label": "config",
+            "command": "cmake",
+            "args": [
+                "-G", "Ninja",
+                "-S", "${fileDirname}",
+                "-B", "build",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": "build",
+            "detail": "config current project"
+        },
+        {
+            "type": "shell",
+            "label": "clean",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${fileDirname}/build",
+                "--target",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": "build",
+            "detail": "clean current project"
         },
     ]
 }

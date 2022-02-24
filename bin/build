@@ -1,5 +1,0 @@
-mkdir -p build
-pushd build
-cmake .. -G Ninja
-ninja -j4 -v
-popd

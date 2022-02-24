@@ -1,6 +1,0 @@
-if [ -d build/ ]
-then
-    pushd build
-    cmake --build . --target clean -v
-    popd
-fi
