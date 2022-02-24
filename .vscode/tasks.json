@@ -10,7 +10,8 @@
             "args": [
                 "--build",
                 "${fileDirname}/build",
-                "-j", "8"
+                "-j",
+                "8"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -29,10 +30,13 @@
             "label": "config",
             "command": "cmake",
             "args": [
-                "-G", "Ninja",
-                "-S", "${fileDirname}",
-                "-B", "build",
-                "-DCMAKE_BUILD_TYPE=Debug",
+                "-G",
+                "Ninja",
+                "-S",
+                "${fileDirname}",
+                "-B",
+                "build",
+                "-DCMAKE_BUILD_TYPE=Debug"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -56,5 +60,22 @@
             "group": "build",
             "detail": "clean current project"
         },
+        {
+            "type": "shell",
+            "label": "new project",
+            "command": "bin/newproject ${input:projectName}",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "create new cpp project",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "projectName",
+            "description": "New Project Name?",
+            "type": "promptString",
+        }
     ]
 }

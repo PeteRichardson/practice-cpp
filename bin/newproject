@@ -1,0 +1,17 @@
+newproject=$1
+
+if [ -d ${newproject} ]
+then
+    echo "# ERROR: Folder ${newproject} already exists.  Aborting."
+    exit 1
+fi
+
+mkdir -p ${newproject}/build
+pushd ${newproject}
+cp ../bin/CMakeLists.template CMakeLists.txt
+echo build/ > .gitignore
+cp ../bin/hello.cc ${newproject}.cc
+cmake -G Ninja -S . -B build -DCMAKE_BUILD_TYPE=Debug
+code -r ${newproject}.cc
+
+popd $newproject
