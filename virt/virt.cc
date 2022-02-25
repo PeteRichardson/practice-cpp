@@ -7,24 +7,32 @@ using std::cout, std::endl, std::string;
 
 class Base {
 public:
-    virtual void print() const {
-        cout << "Base!" << endl;
+    friend std::ostream& operator<<(std::ostream&out, const Base& b) {
+        return b.print(out);
+    }
+
+    virtual std::ostream& print(std::ostream& out) const {
+        out << "Base";
+        return out;
     }
 };
 
 class Derived : public Base {
 public:
-    void print() const override {
-        cout << "Derived!" << endl;
+    std::ostream& print(std::ostream& out) const override { // no need for 'virtual' here.  implied by override
+        out << "Derived";
+        return out;
     }
+
 };
 
-
 int main(int argc, char** argv) {
+    Base    b{};
     Derived d{};
-    Base& b{ d };
+    Base&   bref{ d };
 
-    d.print();
-    b.print();
+    cout << b << '\n';    //  should print "Base"
+    cout << d << '\n';    //  should print "Derived"
+    cout << bref << endl; //  should print "Derived"
     return 0;
 }
