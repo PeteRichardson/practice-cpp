@@ -44,10 +44,6 @@ public:
         name_{name}, age_{age}, gender_{gender}, leg_count_{leg_count} {
         cout << "# Created Being(" << name_ << ", " << age_ << ", " << gender_ <<")" << endl;
     }
-
-    void dump() {
-        cout << get_type_name<decltype(this)>() << "(" << this << ")" <<endl;
-    }
 };
 
 class Human : public Being {
@@ -94,10 +90,10 @@ int main(int argc, char** argv) {
     Human wendy{"Wendy Wilson", 55, 'F', 2, "650-218-7915"};
     Animal bella{"Bella", 8, 'F', 4, "Russian Blue"};
     cout << endl;
-    cout << get_type_name<decltype(pete)>() << "(" << pete << ")" << endl;
-    cout << get_type_name<decltype(wendy)>() << "(" << wendy << ")" <<endl;
-    cout << get_type_name<decltype(bella)>() << "(" << bella << ")" <<endl;
-    cout << endl;
+    // cout << get_type_name<decltype(pete)>() << "(" << pete << ")" << endl;
+    // cout << get_type_name<decltype(wendy)>() << "(" << wendy << ")" <<endl;
+    // cout << get_type_name<decltype(bella)>() << "(" << bella << ")" <<endl;
+    // cout << endl;
     cout << pete << endl;
     cout << wendy << endl;
     cout << bella << endl;
@@ -106,9 +102,7 @@ int main(int argc, char** argv) {
     dump(wendy);
     dump(bella);
 
-    // Human pete{"Pete Richardson", 56, 'M', "650-823-4836"};
-
-
+ 
     // StringSet people { "Pete", "Wendy", "Katherine"};
     // StringSet pets { "Bella", "Newton", "Zoe"};
 
