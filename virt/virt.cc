@@ -7,14 +7,14 @@ using std::cout, std::endl, std::string;
 
 class Base {
 public:
-    void print() const {
+    virtual void print() const {
         cout << "Base!" << endl;
     }
 };
 
 class Derived : public Base {
 public:
-    void print() const {
+    void print() const override {
         cout << "Derived!" << endl;
     }
 };
