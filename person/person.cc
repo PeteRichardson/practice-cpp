@@ -21,19 +21,15 @@ std::ostream& operator<<(std::ostream& out, Person& p) {
     return out;
 }
 
-
 int main(int argc, char** argv) {
-    auto pete  = std::make_unique<Person>("Pete", 56, 'M');
-    auto wendy = std::make_unique<Person>("Wendy", 56, 'F');
-    auto katherine = std::make_unique<Person>("Katherine", 18, 'F');
-    auto bella = std::make_unique<Person>("Bella", 8, 'F');
+    auto pete  = std::make_shared<Person>("Pete", 56, 'M');
+    auto wendy = std::make_shared<Person>("Wendy", 55, 'F');
+    auto katherine = std::make_shared<Person>("Katherine", 18, 'F');
+    auto bella = std::make_shared<Person>("Bella", 8, 'F');
 
-    std::array<std::unique_ptr<Person>, 4> people;
-    people[0] = std::move(pete);
-    people[1] = std::move(wendy);
-    people[2] = std::move(katherine);
-    people[3] = std::move(bella);
-    for (auto i = 0; i<=3; i++) {
-        cout << *(people[i]) << endl;
+    std::array<std::shared_ptr<Person>, 4> people { pete, wendy, katherine, bella };
+
+    for (auto p: people) {
+        cout << *p << endl;
     }
 }
