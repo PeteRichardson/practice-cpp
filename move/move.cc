@@ -2,13 +2,8 @@
 #include <iomanip>
 #include <string>
 #include <cstdint>
-#include <any>
 
 using std::cout, std::endl, std::string;
-
-typedef std::bitset<64> Bits;
-
-
 
 class BigThing {
 public:
@@ -30,10 +25,15 @@ std::ostream& hex64(std::ostream& o) {
     return o << std::setfill('.') << std::setw(16) << std::hex << std::uppercase << std::noshowbase;
 }
 
-std::ostream& dump_mem(std::ostream& o, void* obj, size_t size) {
-    // cout << size << endl;
-    uint64_t* ptr = reinterpret_cast<uint64_t*>(obj);
-    return o << hex64 << (uint64_t) ptr << ": " << hex64 << *ptr << " " << hex64 << *(ptr+1) << '\n';
+void dump_mem(std::ostream& o, const void* obj, const size_t size) {
+    auto ptr = (uint64_t*) obj;
+    for (auto i = 0; i < size / 8; i++){
+        o << hex64 << ptr+i << ": " << hex64 << *(ptr+i) << '\n';
+    }
+    // TODO: print out last "size % 8" bytes
+    // TODO: make it a real inline stream modifier (i.e. return ostream&...)
+    //      i.e.  cout << dump(btp) << endl;
+    // TODO: make it a template func so we pass in an object ref, not a ptr and size)
 }
 
 int main(int argc, char** argv) {
