@@ -6,6 +6,10 @@ project(${project_dir})
 add_executable(${CMAKE_PROJECT_NAME} ${CMAKE_PROJECT_NAME}.cc)
 target_compile_features(${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
 
+#SET(COMPILE_LAYOUT_FLAGS "-Xclang -fdump-record-layouts-simple")
+SET(COMPILE_LAYOUT_FLAGS "-Wpadded")
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${COMPILE_LAYOUT_FLAGS}")
+
 add_custom_command(TARGET "${CMAKE_PROJECT_NAME}" POST_BUILD
     COMMAND dsymutil "${CMAKE_PROJECT_NAME}" 
     WORKING_DIRECTORY "${fileDirname}"
