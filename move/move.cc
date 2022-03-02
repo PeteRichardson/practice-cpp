@@ -47,9 +47,13 @@ std::ostream& hex64(std::ostream& o) {
     return o << std::setfill('.') << std::setw(16) << std::hex << std::uppercase << std::noshowbase;
 }
 
-
-void dump(std::ostream& out, const void* obj, const size_t size) {
-    auto ptr = (uint64_t*) obj;
+template <typename T> 
+void dump(std::ostream& out, T& obj) {
+    auto ptr = (uint64_t*) &obj;
+    size_t size = sizeof(T);
+    std::ios_base::fmtflags f( out.flags() );
+    out << "type: " << typeid(obj).name() << ", size: " << size;
+    out << "\n--------------------\n";
     for (auto i = 0; i < size / 8; i++){
         out << hex64 << ptr+i << ": " << hex64 << *(ptr+i) << '\n';
     }
@@ -60,11 +64,11 @@ void dump(std::ostream& out, const void* obj, const size_t size) {
         for (auto i = 0; i < remainder; i++) {
             cout << std::hex << std::setw(2) << std::uppercase << std::noshowbase << byte_ptr + i;
         }
-        out << endl;
     };
+    out << endl;
+    cout.flags( f );
     // TODO: make it a real inline stream modifier (i.e. return ostream&...)
     //      i.e.  cout << dump(btp) << endl;
-    // TODO: make it a template func so we pass in an object ref, not a ptr and size)
 }
 
 int main(int argc, char** argv) {
@@ -74,7 +78,7 @@ int main(int argc, char** argv) {
 
     // cout << dump_object(btp));
 
-    dump(cout, btp.get(), sizeof(*btp));
+    dump(cout, *btp);
     cout << std::flush;
 }
 
