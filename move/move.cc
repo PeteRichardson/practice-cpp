@@ -1,7 +1,9 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <string>
 #include <cstdint>
+
+#include "utils.h"
 
 using std::cout, std::endl, std::string;
 
@@ -20,13 +22,14 @@ public:
         number_{number}, pos_{x, y, z, 'G'} {
             cout << "# Created BigThing " << number_ << ".  size= "<< sizeof(BigThing) << endl;
         }
+
+    friend std::ostream& operator<<(std::ostream& out, BigThing bt) {
+        out << bt.number_ << ": (" << bt.pos_[0] << "," << bt.pos_[1] << "," << bt.pos_[2] << "," << bt.pos_[3] << ")";
+        return out;
+    };
 };
 #pragma options align=reset
 
-std::ostream& operator<<(std::ostream& out, BigThing bt) {
-    out << bt.number_ << ": (" << bt.pos_[0] << "," << bt.pos_[1] << "," << bt.pos_[2] << "," << bt.pos_[3] << ")";
-    return out;
-};
 
 // class Dumper {
 // public:
@@ -42,34 +45,6 @@ std::ostream& operator<<(std::ostream& out, BigThing bt) {
 //     return Dumper(obj);
 // }
 
-
-std::ostream& hex64(std::ostream& o) {
-    return o << std::setfill('.') << std::setw(16) << std::hex << std::uppercase << std::noshowbase;
-}
-
-template <typename T> 
-void dump(std::ostream& out, T& obj) {
-    auto ptr = (uint64_t*) &obj;
-    size_t size = sizeof(T);
-    std::ios_base::fmtflags f( out.flags() );
-    out << "type: " << typeid(obj).name() << ", size: " << size;
-    out << "\n--------------------\n";
-    for (auto i = 0; i < size / 8; i++){
-        out << hex64 << ptr+i << ": " << hex64 << *(ptr+i) << '\n';
-    }
-    auto remainder = size % 8;
-    if (remainder > 0) {
-        auto byte_ptr = (uint8_t*) (ptr + (size / 8));
-        out << hex64 << (uint64_t*) byte_ptr << ": ";
-        for (auto i = 0; i < remainder; i++) {
-            cout << std::hex << std::setw(2) << std::uppercase << std::noshowbase << byte_ptr + i;
-        }
-    };
-    out << endl;
-    cout.flags( f );
-    // TODO: make it a real inline stream modifier (i.e. return ostream&...)
-    //      i.e.  cout << dump(btp) << endl;
-}
 
 int main(int argc, char** argv) {
     auto btp = std::make_shared<BigThing>(167ULL, 42,43,44);
