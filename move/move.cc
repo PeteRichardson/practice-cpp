@@ -47,19 +47,20 @@ std::ostream& hex64(std::ostream& o) {
     return o << std::setfill('.') << std::setw(16) << std::hex << std::uppercase << std::noshowbase;
 }
 
-void dump(std::ostream& o, const void* obj, const size_t size) {
+
+void dump(std::ostream& out, const void* obj, const size_t size) {
     auto ptr = (uint64_t*) obj;
     for (auto i = 0; i < size / 8; i++){
-        o << hex64 << ptr+i << ": " << hex64 << *(ptr+i) << '\n';
+        out << hex64 << ptr+i << ": " << hex64 << *(ptr+i) << '\n';
     }
     auto remainder = size % 8;
     if (remainder > 0) {
         auto byte_ptr = (uint8_t*) (ptr + (size / 8));
-        o << hex64 << (uint64_t*) byte_ptr << ": ";
+        out << hex64 << (uint64_t*) byte_ptr << ": ";
         for (auto i = 0; i < remainder; i++) {
             cout << std::hex << std::setw(2) << std::uppercase << std::noshowbase << byte_ptr + i;
         }
-        cout << endl;
+        out << endl;
     };
     // TODO: make it a real inline stream modifier (i.e. return ostream&...)
     //      i.e.  cout << dump(btp) << endl;
