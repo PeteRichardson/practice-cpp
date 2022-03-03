@@ -8,21 +8,7 @@
 using std::cout, std::endl, std::string;
 
 #pragma pack(0)
-class Person {
-public:
-    string name_{};
-    unsigned int age_{};
-    char gender_{};
-
-    Person(string name, unsigned int age, char gender) : name_{name}, age_{age}, gender_{gender} {
-        cout << "# Created Person@" << this << "(name: "<< name_ << ")" << endl;
-    }
-
-    friend std::ostream& operator<<(std::ostream& out, Person& p) {
-        out << "Person(" << p.name_ << "," << p.age_ << "," << p.gender_ << ")";
-        return out;
-    }
-};
+#include "person.h"
 #pragma options align=reset
 
 int main(int argc, char** argv) {
