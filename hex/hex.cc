@@ -7,8 +7,8 @@
 using std::cout, std::endl;
 
 int main(int argc, char** argv) {
-    auto pete = std::make_unique<Person>("pete", 56, 'M');
-    hexdump(cout, *pete, "pete");
-    cout << "\n----------------------------------\n";
-    dump(cout, *pete, "pete");
+    auto pete = std::make_unique<Person>("Pete Richardson", 56, 'M');
+
+    cout << dbg::memdump(pete) << endl;
+    cout << dbg::memdump(*pete) << endl;
 }
