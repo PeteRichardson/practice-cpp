@@ -5,7 +5,7 @@
 
 #include "utils.h"
 
-using std::cout, std::endl, std::string;
+using std::cout, std::endl;
 
 #pragma pack(0)
 class BigThing {
@@ -20,41 +20,19 @@ public:
 
     BigThing(unsigned long long number, char x, char y, char z) :
         number_{number}, pos_{x, y, z, 'G'} {
-            cout << "# Created BigThing " << number_ << ".  size= "<< sizeof(BigThing) << endl;
+            cout << "# Created BigThing " << number_ << " @" << this << ".  size= "<< sizeof(BigThing) << endl;
         }
 
     friend std::ostream& operator<<(std::ostream& out, BigThing bt) {
-        out << bt.number_ << ": (" << bt.pos_[0] << "," << bt.pos_[1] << "," << bt.pos_[2] << "," << bt.pos_[3] << ")";
+        out << "BigThing " << bt.number_ << ": (" << bt.pos_[0] << "," << bt.pos_[1] << "," << bt.pos_[2] << "," << bt.pos_[3] << ")";
         return out;
     };
 };
 #pragma options align=reset
 
-
-// class Dumper {
-// public:
-//     Dumper(BigThing obj) : obj_{obj} {}
-//     void operator()(std::ostream& o) const {
-//         o << "big foo bottom pants obj size=" << sizeof(obj_);
-//     }
-// private:
-//     BigThing obj_;
-// };
-
-// Dumper dump_object(BigThing obj) {
-//     return Dumper(obj);
-// }
-
-
 int main(int argc, char** argv) {
     auto btp = std::make_shared<BigThing>(167ULL, 42,43,44);
-    cout << *btp << endl;
-    cout << "--------------------\n";
-
-    // cout << dump_object(btp));
-
-    dump(cout, *btp);
-    cout << std::flush;
+    cout << *btp << '\n' << dbg::memdump(*btp) << endl;
 }
 
 

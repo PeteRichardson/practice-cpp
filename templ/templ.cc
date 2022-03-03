@@ -29,6 +29,6 @@ int main(int argc, char** argv) {
     //Person pete{"Pete Richardson", 56, 'M'};
     auto pete = std::make_shared<Person>("Pete Richardson", 56, 'M');
     auto wendy = std::make_shared<Person>("Wendy Wilson", 55, 'F');
-    dump(cout, *pete);
-    dump(cout, *wendy);
+    cout << "*pete\n" << dbg::memdump(*pete) << '\n';
+    cout << "*wendy\n" << dbg::memdump(*wendy) << endl;
 }
