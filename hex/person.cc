@@ -7,7 +7,7 @@ using std::cout, std::endl, std::string;
 
 Person::Person(string name, unsigned int age, char gender) :
     name_{name}, age_{age}, gender_{gender} {
-    cout << "# Created Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    // cout << "# Created Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
 }
 
 // Copy constructor
@@ -29,7 +29,7 @@ Person& Person::operator=(const Person& rhs) {
 }  
 
 Person::~Person() {
-    cout << "# Deleted Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    // cout << "# Deleted Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
 }
 
 std::ostream& operator<<(std::ostream& out, Person& p) {
