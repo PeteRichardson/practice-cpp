@@ -9,7 +9,10 @@ using std::cout, std::endl, std::string;
 
 #pragma pack(0)
 #include "person.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wignored-pragmas"
 #pragma options align=reset
+#pragma clang diagnostic pop
 
 int main(int argc, char** argv) {
     //Person pete{"Pete Richardson", 56, 'M'};

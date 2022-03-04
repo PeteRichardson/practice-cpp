@@ -28,7 +28,10 @@ public:
         return out;
     };
 };
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wignored-pragmas"
 #pragma options align=reset
+#pragma clang diagnostic pop
 
 int main(int argc, char** argv) {
     auto btp = std::make_unique<BigThing>(167ULL, 42,43,44);
