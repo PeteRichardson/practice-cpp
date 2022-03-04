@@ -4,62 +4,10 @@
 #include <array>
 
 #include "utils.h"
+#include "person.h"
 
 using std::cout, std::endl, std::string;
 
-class Person {
-public:
-    string name_{};
-    unsigned int age_{};
-    char gender_{};
-
-    // Constructor
-    Person(string name, unsigned int age, char gender) :
-        name_{name}, age_{age}, gender_{gender} {
-        cout << "# Created Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-    }
-
-    // Copy constructor
-    Person(const Person& p) :
-        name_{p.name_}, age_{p.age_}, gender_{p.gender_} {
-        cout << "# Copied Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-    }
-
-    // Assignment
-    Person& operator=(const Person& rhs) {
-        cout << "# (PRE) Assigned Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-       if (&rhs != this) {
-            this->name_ = rhs.name_;
-            this->age_ = rhs.age_;
-            this->gender_ = rhs.gender_;
-        }
-        cout << "# (POST) Assigned Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-        return *this;
-    }  
-
-    // Person(const Person&& p) :
-    //     name_{p.name_}, age_{p.age_}, gender_{p.gender_} {
-    //     cout << "# RValue-Copied Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-    // }
-    // Copy Assignment
-    // Person& operator=(const Person& rhs) {
-    //     if (&rhs != this) {
-    //         this->name_ = rhs.name;
-    //         this->age_ = rhs.age;
-    //         this->gender_ = rhs.gender;
-    //     }
-    //     cout << "# Copy-Assigned Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-    //     return *this;
-    // }  
-
-    ~Person() {
-        cout << "# Deleted Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
-    }
-};
-std::ostream& operator<<(std::ostream& out, Person& p) {
-    out << p.name_ << ": age=" << p.age_ << ", gender=" << p.gender_;
-    return out;
-}
 
 int main(int argc, char** argv) {
     auto pete  = std::make_unique<Person>("Pete", 56, 'M');

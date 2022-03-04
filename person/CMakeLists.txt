@@ -4,6 +4,7 @@ project(person)
 
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
+    "../common/person.cc"
 )
 
 include_directories("${PROJECT_DIR}../common")
