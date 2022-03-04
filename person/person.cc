@@ -3,6 +3,8 @@
 #include <memory>
 #include <array>
 
+#include "utils.h"
+
 using std::cout, std::endl, std::string;
 
 class Person {
@@ -60,22 +62,33 @@ std::ostream& operator<<(std::ostream& out, Person& p) {
 }
 
 int main(int argc, char** argv) {
-    auto pete  = std::make_shared<Person>("Pete", 56, 'M');
-    auto wendy = std::make_shared<Person>("Wendy", 55, 'F');
-    auto katherine = std::make_shared<Person>("Katherine", 18, 'F');
-    auto bella = std::make_shared<Person>("Bella", 8, 'F');
-
+    auto pete  = std::make_unique<Person>("Pete", 56, 'M');
+    auto wendy = std::make_unique<Person>("Wendy", 55, 'F');
+    auto katherine = std::make_unique<Person>("Katherine", 18, 'F');
+    auto bella = std::make_unique<Person>("Bella Hand o'the Queen", 8, 'F');
     Person *george_p = new Person("George", 12, 'M');
     Person joe = Person("Joe", 25,'M');
-    cout << ">>>>>>>>>>>\n";
+
+    cout << "*bella: (size " << sizeof *bella << ")\n" << dbg::memdump(*bella);
+    
+    cout << ">>>>>>>>>>>" << endl;
     auto george2 = george_p;
     auto george_sp = std::shared_ptr<Person>(george_p);
     auto george3 = george_sp;
     joe = *george_p;
-    cout << "<<<<<<<<<<<\n";
+    cout << "<<<<<<<<<<<" << endl;
 
-    std::array<std::shared_ptr<Person>, 5> people { pete, wendy, katherine, bella, george_sp };
-    for (auto p: people) {
+    std::array<std::unique_ptr<Person>, 4> people{};
+    try {
+        people.at(0) = std::move(pete);
+        people.at(1) = std::move(wendy);
+        people.at(2) = std::move(katherine);
+        people.at(3) = std::move(bella);
+        people.at(4) = std::make_unique<Person>(*george_p);  //Should throw here...
+    } catch (const std::out_of_range& e) {
+        std::cerr << "# CATCH: I guess we're done! " << e.what() << '\n';
+    }
+    for (const auto &p: people) {
         cout << *p << endl;
     }
 }

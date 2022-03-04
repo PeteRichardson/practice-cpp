@@ -13,8 +13,8 @@ using std::cout, std::endl, std::string;
 
 int main(int argc, char** argv) {
     //Person pete{"Pete Richardson", 56, 'M'};
-    auto pete = std::make_shared<Person>("Pete Richardson", 56, 'M');
-    auto wendy = std::make_shared<Person>("Wendy Wilson", 55, 'F');
+    auto pete = std::make_unique<Person>("Pete Richardson", 56, 'M');
+    auto wendy = std::make_unique<Person>("Wendy Wilson", 55, 'F');
     cout << "*pete\n" << dbg::memdump(*pete) << '\n';
     cout << "*wendy\n" << dbg::memdump(*wendy) << endl;
 }

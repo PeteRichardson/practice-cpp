@@ -31,7 +31,7 @@ public:
 #pragma options align=reset
 
 int main(int argc, char** argv) {
-    auto btp = std::make_shared<BigThing>(167ULL, 42,43,44);
+    auto btp = std::make_unique<BigThing>(167ULL, 42,43,44);
     cout << *btp << '\n' << dbg::memdump(*btp) << endl;
 }
 
