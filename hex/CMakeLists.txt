@@ -4,7 +4,6 @@ project(hex)
 
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
-    "../common/utils.cc"
     "../common/person.cc"
 )
 

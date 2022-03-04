@@ -3,7 +3,7 @@
 #include <thread>
 
 #include "readers.h"
-#include "utils.h"
+#include "perf.h"
 
 using std::cout, std::endl, std::string;
 
@@ -12,7 +12,7 @@ int main (int argc, char** argv) {
         cout << "# usage: files <filename>" << endl;
         return 1;
     }
-    Timer clock;
+    perf::Timer clock;
 
     string filename {argv[1]};
     std::ifstream file(filename);

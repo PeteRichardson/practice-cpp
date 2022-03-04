@@ -4,7 +4,6 @@ project(bitwise)
 
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
-    "../common/utils.cc"
 )
 
 include_directories("../common")

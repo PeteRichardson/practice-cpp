@@ -4,7 +4,6 @@ project(${project_dir})
 
 add_executable(${CMAKE_PROJECT_NAME}
     "${CMAKE_PROJECT_NAME}.cc"
-#    "../common/utils.cc"
 )
 
 # include_directories("${PROJECT_DIR}../common")

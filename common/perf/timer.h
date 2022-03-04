@@ -1,16 +1,5 @@
-// utils.h
-
-#ifndef UTILS_H
-#define UTILS_H
-
-#include <chrono>
-#include <iomanip>
-#include <iostream>
-
-#include "hexdump.h"
-
-void log(std::string);
-
+#ifndef TIMER_H
+#define TIMER_H
 
 template <class DT = std::chrono::milliseconds,
           class ClockT = std::chrono::steady_clock>
@@ -35,6 +24,5 @@ public:
         return std::chrono::duration_cast<T>(_end - _start); 
     }
 };
-
 
 #endif

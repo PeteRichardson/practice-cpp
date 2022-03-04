@@ -5,7 +5,6 @@ project(files)
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
     "readers.cc"
-    "../common/utils.cc"
 )
 
 include_directories("../common")
