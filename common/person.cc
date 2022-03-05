@@ -48,19 +48,7 @@ std::ostream& operator<<(std::ostream& out, Person& p) {
 }
 
 Person operator"" _person(const char* p, size_t n) {
-    string name {p};
-    if (name == "Pete") {
-            return Person(name, 56, 'M');
-    }
-    if (name == "Wendy") {
-            return Person(name, 55, 'F');
-    }
-    if (name == "Katherine") {
-            return Person(name, 18, 'F');
-    }
-    // Don't recognize the literal...
-    cout << "# Warning:  I don't know who '" << p << "' is." << endl;
-    return Person(p,0,'?');
+    return Person(p);
 }
 
 // Convenience constructor to create common records with just name:
@@ -101,7 +89,7 @@ Person::Person(string name) {
             break;
         default:
             age_={};
-            gender_={};
+            gender_={'?'};
             ssNumber_={};
     }
 }
