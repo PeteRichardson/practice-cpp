@@ -8,30 +8,26 @@
 using std::cout, std::endl, std::string;
 
 void DoPerson(Person& p, string message = "") {
-    PLOGI << "Creating " << message;
-    PLOGD << "&p\n" << dbg::memdump(&p);
-    PLOGD << "p\n" << dbg::memdump(p);   
+    PLOGI << "Dumping " << message;
+    PLOGV << "&p\n" << dbg::memdump(&p);
+    PLOGV << "p\n" << dbg::memdump(p);   
     cout << p << endl;
-
 }
 
 void DoPerson(Person&& p, string message = "") {
-    PLOGV << "Calling through DoPerson(Person&&, string)";
+    PLOGD << "Calling through DoPerson(Person&&, string)";
     DoPerson(p, message);
 }
 
 int main(int argc, char** argv) {
-    setup_console_logging(plog::warning);
+    setup_console_logging(plog::verbose);
 
-    PLOGV << "BEGIN";
+    PLOGD << "BEGIN";
 
-    DoPerson(Person("Pete", 56, 'M'), R"|(Person pete {"Pete", 56, 'M'}")|");
-    DoPerson(Person("Wendy"), R"|(Person("Wendy"))|");
-   
-    auto wendy = "Wendy"_person;
-    DoPerson(wendy, R"|("Wendy"_person)|");
-    
-    auto ian = "Ian"_person;
-    DoPerson(ian, R"("Ian"_person)");
-    PLOGV << "END";
+    DoPerson(Person("Pete", 56, 'M'), R"|(Person pete {"Pete", 56, 'M'})|");
+    DoPerson(Person("Wendy"), R"(Person("Wendy"))");
+    DoPerson("Wendy"_person, R"("Wendy"_person)");
+    DoPerson("Ian"_person, R"("Ian"_person)");
+
+    PLOGD << "END";
 }
