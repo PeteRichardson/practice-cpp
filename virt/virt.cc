@@ -12,7 +12,7 @@ public:
     }
 
     virtual std::ostream& print(std::ostream& out) const {
-        out << "Base";
+        out << "Base class";
         return out;
     }
 };
@@ -20,10 +20,9 @@ public:
 class Derived : public Base {
 public:
     std::ostream& print(std::ostream& out) const override { // no need for 'virtual' here.  implied by override
-        out << "Derived";
+        out << "Derived class";
         return out;
     }
-
 };
 
 int main(int argc, char** argv) {
