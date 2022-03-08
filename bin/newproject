@@ -9,9 +9,9 @@ fi
 mkdir -p ${newproject}/build
 pushd ${newproject}
 cp ../bin/CMakeLists.template CMakeLists.txt
-echo build/ > .gitignore
+sed -i '' "s/replace-me/${newproject}/" CMakeLists.txt
 cp ../bin/hello.cc ${newproject}.cc
-cmake -G Ninja -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake -G Ninja -S . -B build
 code -r ${newproject}.cc
 
 popd $newproject

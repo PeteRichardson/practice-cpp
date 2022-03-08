@@ -7,7 +7,10 @@ add_executable(${PROJECT_NAME}
     "../common/person.cc"
 )
 
-include_directories("${PROJECT_DIR}../common")
+include_directories("../common")
+
+set (CMAKE_BUILD_TYPE debug)
+
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
     COMMAND dsymutil "${PROJECT_NAME}" 

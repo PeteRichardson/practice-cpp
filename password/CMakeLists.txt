@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(password)
 
+set (CMAKE_BUILD_TYPE debug)
+
 add_executable             (        password password.cc )
 add_dependencies           (        password generate_wordlist tokenize_pdfs)
 target_compile_features    (        password PUBLIC cxx_std_20)

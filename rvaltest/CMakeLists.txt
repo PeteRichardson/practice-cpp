@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
-get_filename_component(project_dir ${CMAKE_CURRENT_SOURCE_DIR} NAME)
-project(${project_dir})
 
-add_executable(${CMAKE_PROJECT_NAME}
-    "${CMAKE_PROJECT_NAME}.cc"
+project(rvaltest)
+
+add_executable(${PROJECT_NAME}
+    "${PROJECT_NAME}.cc"
 )
 
-include_directories("${PROJECT_DIR}../common" "../plog/include")
-# add_compile_options("-Wpadded")
-# target_link_libraries(${CMAKE_PROJECT_NAME} -lncurses)
+include_directories("../common" "../plog/include")
 
-target_compile_features(${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
-add_custom_command(TARGET "${CMAKE_PROJECT_NAME}" POST_BUILD
-    COMMAND dsymutil "${CMAKE_PROJECT_NAME}" 
+set (CMAKE_BUILD_TYPE debug)
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
+add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
+    COMMAND dsymutil "${PROJECT_NAME}" 
     WORKING_DIRECTORY "${fileDirname}"
 )
