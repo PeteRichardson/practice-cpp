@@ -4,7 +4,7 @@
 
 std::vector<std::string> words {
     // words.h is generated from pdfs during the build
-    #include "build/words.h"    
+    #include "words.h"    
 };
 
 std::random_device rd{};
