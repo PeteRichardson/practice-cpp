@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iterator>
 #include "readers.h"
 
 using std::cout, std::endl, std::string;
