@@ -97,13 +97,13 @@ public:
   memdump(const void* buf, std::size_t bufsz)
       : buffer_{reinterpret_cast<const std::byte*>(buf)}, bufsize_{bufsz} {}
 
-  template <typename T>
+  template <typename T, typename fake = void>
   explicit memdump(const T& buf)
       : buffer_{reinterpret_cast<const std::byte*>(&buf)}, bufsize_{sizeof(T)} {}
 
   // It's UB to access `+ 1`th byte of a string_view so we don't, despite most
   // targets of string_views (ie std::string or string literal) having '\0'.
-  template <>
+  template <typename fake>
   explicit memdump(const std::string_view& buf)
       : buffer_{reinterpret_cast<const std::byte*>(&buf)}, bufsize_{sizeof(buf)} {
     child_       = std::make_unique<memdump>(buf.data(), buf.size());
@@ -112,7 +112,7 @@ public:
 
   // There is some debate but we believe str[size()] is legal via [] or *
   // but UB via iterator. So here we DO show the '`0' terminator.
-  template <>
+  template <typename fake>
   explicit memdump(const std::string& buf)
       : buffer_{reinterpret_cast<const std::byte*>(&buf)}, bufsize_{sizeof(buf)} {
     auto data_byte_ptr = reinterpret_cast<const std::byte*>(buf.data());
