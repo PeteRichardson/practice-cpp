@@ -20,7 +20,11 @@ void my_str_function(char* p) {
 
 int main(int argc, char **argv) {
     // Test 1:  just a string literal.  which func will it match?
+    // NOTE:  gcc spits out: "warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]"
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wwrite-strings"
     my_str_function("Test 1: string literal!");
+    #pragma GCC diagnostic pop
 
     // Test 2:  basically the same thing... just for completeness
     auto s = "Test 2: auto var";
