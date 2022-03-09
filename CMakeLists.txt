@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_INSTALL_PREFIX )
 
 project(cpp)
+
 add_subdirectory(bitwise)
 add_subdirectory(classes)
 add_subdirectory(collections)
