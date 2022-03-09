@@ -12,7 +12,7 @@ int main (int argc, char** argv) {
         cout << "# usage: files <filename>" << endl;
         return 1;
     }
-    perf::Timer clock;
+    Timer clock;
 
     string filename {argv[1]};
     std::ifstream file(filename);

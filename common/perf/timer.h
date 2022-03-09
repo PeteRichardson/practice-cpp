@@ -1,6 +1,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 
+#include <chrono>
+
 template <class DT = std::chrono::milliseconds,
           class ClockT = std::chrono::steady_clock>
 class Timer

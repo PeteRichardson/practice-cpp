@@ -8,7 +8,7 @@ using std::cout, std::endl, std::string;
 
 int main(int argc, char** argv) {
 
-    perf::Timer clock;
+    Timer clock;
     clock.tick();
 
     cout << "Hello, World!" << endl;

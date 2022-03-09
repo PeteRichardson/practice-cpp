@@ -1,11 +1,6 @@
-// #include <array>
-// #include <cstdio>
 #include <iostream>
 #include <fstream>
-// #include <memory>
-// #include <random>
 #include <set>
-// #include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -19,7 +14,7 @@ std::vector<string> words{};
 int main(int argc, char** argv) {
     setup_console_logging(plog::none);
 
-    perf::Timer clock{};
+    Timer clock{};
     clock.tick();
 
     std::set<string> wordset;

@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     // setup_console_logging(plog::none);
     setup_console_logging(plog::debug);
 
-    perf::Timer clock;
+    Timer clock;
     clock.tick();
 
     PLOGD << "Hello, World!";

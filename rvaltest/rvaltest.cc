@@ -71,7 +71,7 @@ Task * MakeTask() {
 }
 
 int main(int argc, char** argv) {
-    perf::Timer clock;
+    Timer clock;
 
     setup_console_logging(plog::debug);
     PLOGD << "Welcome to rvaltest!";
