@@ -3,8 +3,6 @@
 
 #include <iomanip>
 
-namespace dbg {
 #include "dbg/hexdump.h"
-}
 
 #endif

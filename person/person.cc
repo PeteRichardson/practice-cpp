@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     Person *george_p = new Person("George", 12, 'M');
     Person joe = Person("Joe", 25,'M');
 
-    cout << "*bella: (size " << sizeof *bella << ")\n" << dbg::memdump(*bella);
+    cout << "*bella: (size " << sizeof *bella << ")\n" << memdump(*bella);
     
     cout << ">>>>>>>>>>>" << endl;
     auto george2 = george_p;

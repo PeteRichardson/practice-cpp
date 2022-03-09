@@ -11,7 +11,6 @@
 using std::cout, std::endl;
 
 int main(int argc, char** argv) {
-    // setup_console_logging(plog::none);
     setup_console_logging(plog::debug);
 
     Timer clock;
@@ -20,7 +19,7 @@ int main(int argc, char** argv) {
     PLOGD << "Hello, World!";
 
     auto pete = Person("Pete");
-    PLOGW << "pete:\n" << dbg::memdump(pete);
+    PLOGW << "pete:\n" << memdump(pete);
 
     cout << "This is a test of the emergency broadcasting sytem!" << endl;
     std::this_thread::sleep_for(std::chrono::milliseconds{250});

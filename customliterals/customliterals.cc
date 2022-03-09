@@ -9,8 +9,8 @@ using std::cout, std::endl, std::string;
 
 void DoPerson(Person& p, string message = "") {
     PLOGI << "Dumping " << message;
-    PLOGV << "&p\n" << dbg::memdump(&p);
-    PLOGV << "p\n" << dbg::memdump(p);   
+    PLOGV << "&p\n" << memdump(&p);
+    PLOGV << "p\n" << memdump(p);   
     cout << p << endl;
 }
 

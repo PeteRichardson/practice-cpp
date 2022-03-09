@@ -10,8 +10,6 @@ using std::cerr, std::endl;
 int main(int argc, char** argv) {
     auto pete = std::make_unique<Person>("Pete");
 
-    cerr << dbg::memdump(pete) << endl;
-    cerr << dbg::memdump(*pete) << endl;
-    // dump(cerr, "pete", pete);
-    // dump(cerr, "*pete", *pete);
+    cerr << memdump(pete) << endl;
+    cerr << memdump(*pete) << endl;
 }

@@ -43,8 +43,8 @@ public:
     }
 
     void Enqueue(const Task & t) {
-        PLOGD << "Enqueued Address t\n" << dbg::memdump(&t);
-        PLOGD << "Enqueued Data t\n" << dbg::memdump(t);
+        PLOGD << "Enqueued Address t\n" << memdump(&t);
+        PLOGD << "Enqueued Data t\n" << memdump(t);
         PLOGN << "Enqueued " << &t;
     }
 };
@@ -58,7 +58,7 @@ void Enqueue(Queue &q, Task const & t) {
 template< class Queue, class Task >
 void Enqueue(Queue &q, Task && t) {
     PLOGW << "using rval Enqueue";
-    PLOGD << "In Enqueue t\n" << dbg::memdump(t);
+    PLOGD << "In Enqueue t\n" << memdump(t);
 
     q.Enqueue( std::move(t) );
     // q.Enqueue( t );
@@ -66,7 +66,7 @@ void Enqueue(Queue &q, Task && t) {
 
 Task * MakeTask() {
     Task *t = new Task("Made by MakeTask()");
-    PLOGD << "In MakeTask t\n" << dbg::memdump(*t);
+    PLOGD << "In MakeTask t\n" << memdump(*t);
     return t;
 }
 
@@ -79,7 +79,7 @@ int main(int argc, char** argv) {
     auto q = Queue<Task>("muhqueue");
     Enqueue(q, string("Skittles!"));
     Task *t = MakeTask();
-    PLOGD << "In main t\n" << dbg::memdump(t);
+    PLOGD << "In main t\n" << memdump(t);
     Enqueue(q, *t);
 
     clock.tock();

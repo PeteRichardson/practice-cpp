@@ -35,7 +35,7 @@ public:
 
 int main(int argc, char** argv) {
     auto btp = std::make_unique<BigThing>(167ULL, 42,43,44);
-    cout << *btp << '\n' << dbg::memdump(*btp) << endl;
+    cout << *btp << '\n' << memdump(*btp) << endl;
 }
 
 
