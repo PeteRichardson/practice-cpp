@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -7,8 +8,6 @@
 #include "animal.h"
 
 using std::cout, std::endl, std::string;
-
-using Bng_up = std::unique_ptr<Being>;
 
 int main(int argc, char** argv) {
 
