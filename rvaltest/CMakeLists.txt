@@ -4,6 +4,7 @@ project(rvaltest)
 
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
+    "../common/log.cc"
 )
 
 include_directories("../common" "../plog/include")

@@ -5,6 +5,7 @@ project(logtest)
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
     "../common/person.cc"
+    "../common/log.cc"
 )
 
 include_directories("../common" "../plog/include")
