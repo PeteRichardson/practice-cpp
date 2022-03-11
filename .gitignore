@@ -3,3 +3,4 @@
 !.vscode/launch.json
 **/build/
 .DS_Store
+**/cmake-build-debug/
