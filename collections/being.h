@@ -16,7 +16,7 @@ public:
     // Copy constructor that logs copies
     Being(const Being&);
 
-    ~Being();
+    virtual ~Being();
 
     virtual std::ostream& print(std::ostream&) const;
 
