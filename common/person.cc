@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <typeinfo>
+#include <sstream>
 
 using std::cout, std::endl, std::string;
 
@@ -33,17 +34,22 @@ Person::~Person() {
     // cout << "# Deleted Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
 }
 
-std::ostream& operator<<(std::ostream& out, Person& p) {
-    // out << p.name_ << ": age=" << p.age_ << ", gender=" << p.gender_;
+Person::operator string() const { 
+    std::stringstream result;
     string gender_str{"person"};
-    switch (p.gender_) {
+    switch (gender_) {
         case 'M': gender_str = "male";
             break;
         case 'F': gender_str = "female";
             break;
         }
 
-    out << p.name_ << " is a " << p.age_ << " year old " << gender_str << '.';
+    result << name_ << " is a " << age_ << " year old " << gender_str << '.';
+    return result.str();
+}
+
+std::ostream& operator<<(std::ostream& out, Person& p) {
+    out << static_cast<std::string>(p);
     return out;
 }
 

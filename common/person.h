@@ -24,6 +24,8 @@ public:
 
     ~Person();
 
+    operator string() const;
+
     string GetSSNumber();
     static string ClassName();
 
