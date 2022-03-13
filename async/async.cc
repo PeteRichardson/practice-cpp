@@ -2,18 +2,19 @@
 #include <future>
 #include <chrono>
 #include <random>
+#include <array>
 
 #include "log.h"
 #include "perf.h"
+#include "dbg.h"
 
 using std::cout, std::endl, std::async;
 
 int DoSomething(char c) {
-    std::default_random_engine dre(c);
-    std::uniform_int_distribution<int> id(10,1000);
+    std::random_device rd{};
 
     for (int i=0; i<10; ++i){
-        std::this_thread::sleep_for(std::chrono::milliseconds(id(dre)));
+        std::this_thread::sleep_for(std::chrono::milliseconds(rd() % 1000));
         std::cout.put(c).flush();
     }
     return c;
@@ -22,15 +23,21 @@ int DoSomething(char c) {
 int main(int argc, char** argv) {
     Timer clock{};
     setup_console_logging(plog::debug);
-    PLOGD << "Starting async";
-    PLOGD << "func1() in background, func2() in foreground";
 
-    auto result1( async([] () { return DoSomething('-'); } ) );
-    auto result2( async([] () { return DoSomething('.'); } ) );
+    const int n = 10;
+    PLOGD << "Starting async on " << n << " background threads.";
 
-    int result = result1.get() + result2.get();
+    std::array<std::future<int>, n> results{};
+    for (auto i=0; i < n; ++i) {
+        results[i] = async([=] () { return DoSomething(i+0x30); } );  // pass in chars '0'-'9' (i.e. 0x30, 0x31...0x39)
+    }
 
-    cout << "\nResult of func1('-') + func2('.') = " << result << endl;
+    int result{};
+    for (auto i=0; i < n; ++i) {
+        result += results[i].get();
+    }
+
+    cout << "\nSum of return values from " << n << " background threads = " << result << endl;
     
     clock.tock();
     PLOGD << "Ending async.  Runtime " << clock.duration().count() << "ms";
