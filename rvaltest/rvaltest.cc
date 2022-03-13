@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "dbg.h"
-#include "log.h"
-#include "perf.h"
+#include <common/dbg.h>
+#include <common/log.h>
+#include <common/perf.h>
 
 using std::string;
 

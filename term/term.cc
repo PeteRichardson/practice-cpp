@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cpp-terminal/base.hpp>
 
-#include <log.h>
+#include <common/log.h>
 
 int main(int argc, char** argv) {
     setup_console_logging(plog::debug);

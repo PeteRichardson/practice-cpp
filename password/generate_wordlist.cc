@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "log.h"
-#include "perf.h"
+#include <common/log.h>
+#include <common/perf.h>
 
 using std::cout, std::string;
 

@@ -1,12 +1,13 @@
 #include <iostream>
 #include <memory>
 
-#include "dbg.h"
+#include <common/dbg.h>
 
 using std::cout, std::endl;
 
 #pragma pack(0)
-#include "person.h"
+#include <common/person.h>
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wignored-pragmas"
 #pragma options align=reset

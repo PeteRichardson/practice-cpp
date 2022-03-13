@@ -4,7 +4,6 @@ project(term)
 
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
-    "../common/log.cc"
    )
 
 include_directories(
@@ -13,6 +12,6 @@ include_directories(
     "../cpp-terminal"
     )
 
-target_link_libraries(${PROJECT_NAME} cpp-terminal)
+target_link_libraries(${PROJECT_NAME} cpp-terminal common)
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+include(../CMake_common.txt)   # sets stdc++20, debug, etc

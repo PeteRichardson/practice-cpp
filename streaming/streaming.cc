@@ -3,9 +3,9 @@
 #include <string>
 #include <memory>
 
-#include "dbg.h"
-#include "log.h"
-#include "person.h"
+#include <common/dbg.h>
+#include <common/log.h>
+#include <common/person.h>
 
 using std::cout, std::endl, std::string;
 

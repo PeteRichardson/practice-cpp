@@ -6,4 +6,4 @@ add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
 )
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+include(../CMake_common.txt)   # sets stdc++20, debug, etc

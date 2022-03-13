@@ -3,7 +3,7 @@
 #include <string>
 #include <cstdint>
 
-#include "dbg.h"
+#include <common/dbg.h>
 
 using std::cout, std::endl;
 

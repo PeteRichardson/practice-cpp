@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "log.h"
-#include "dbg.h"
-#include "person.h"
+#include <common/log.h>
+#include <common/dbg.h>
+#include <common/person.h>
 
 using std::cout, std::endl, std::string;
 

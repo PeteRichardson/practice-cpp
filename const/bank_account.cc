@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include "log.h"
+#include <common/log.h>
 
 using std::string;
 

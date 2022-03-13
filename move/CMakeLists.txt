@@ -9,4 +9,4 @@ add_executable(${PROJECT_NAME}
 include_directories("../common")
 add_compile_options("-Wpadded")
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+include(../CMake_common.txt)   # sets stdc++20, debug, etc

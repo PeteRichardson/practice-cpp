@@ -11,4 +11,4 @@ add_executable(${PROJECT_NAME}
 # add_compile_options("-Wpadded")
 # target_link_libraries(${PROJECT_NAME} -lncurses)
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+include(../CMake_common.txt)   # sets stdc++20, debug, etc

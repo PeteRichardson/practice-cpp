@@ -2,7 +2,7 @@
 #include <string>
 
 #include "bank_account.h"
-#include "log.h"
+#include <common/log.h>
 
 int main(int argc, char** argv) {
     setup_console_logging(plog::debug);

@@ -8,4 +8,4 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} -lncurses)
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+include(../CMake_common.txt)   # sets stdc++20, debug, etc

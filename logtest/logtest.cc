@@ -2,11 +2,10 @@
 #include <string>
 #include <thread>
 
-#include "log.h"
-#include "person.h"
-#include "dbg.h"
-#include "perf.h"
-
+#include <common/log.h>
+#include <common/person.h>
+#include <common/dbg.h>
+#include <common/perf.h>
 
 using std::cout, std::endl;
 

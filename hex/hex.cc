@@ -2,8 +2,8 @@
 #include <iostream>
 #include <memory>
 
-#include "dbg.h"
-#include "person.h"
+#include <common/dbg.h>
+#include <common/person.h>
 
 using std::cerr, std::endl;
 

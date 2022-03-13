@@ -5,9 +5,10 @@ project(const)
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
     "bank_account.cc"
-    "../common/log.cc"
 )
 
 include_directories("../common" "../plog/include")
+target_link_libraries(${PROJECT_NAME} common)
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+
+include(../CMake_common.txt)   # sets stdc++20, debug, etc

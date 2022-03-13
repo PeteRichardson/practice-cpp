@@ -1,5 +1,5 @@
 #include <iostream>
-#include "person.h"
+#include <common/person.h>
 
 using std::cout, std::endl, std::string;
 

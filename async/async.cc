@@ -4,9 +4,9 @@
 #include <random>
 #include <array>
 
-#include "log.h"
-#include "perf.h"
-#include "dbg.h"
+#include <common/log.h>
+#include <common/perf.h>
+#include <common/dbg.h>
 
 using std::cout, std::endl, std::async;
 

@@ -9,4 +9,4 @@ add_executable(${PROJECT_NAME}
     "animal.cc"
 )
 
-include(../common/CMake_common.txt)   # sets stdc++20, debug, etc
+include(../CMake_common.txt)   # sets stdc++20, debug, etc
