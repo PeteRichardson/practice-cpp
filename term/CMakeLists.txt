@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(term)
+
+add_executable(${PROJECT_NAME}
+    "${PROJECT_NAME}.cc"
+    "../common/log.cc"
+   )
+
+include_directories(
+    "../common"
+    "../plog/include"
+    "../cpp-terminal"
+    )
+
+target_link_libraries(${PROJECT_NAME} cpp-terminal)
+
+include(../common/CMake_common.txt)   # sets stdc++20, debug, etc

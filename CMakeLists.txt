@@ -24,6 +24,7 @@ add_subdirectory(rvaltest)
 add_subdirectory(streaming)
 add_subdirectory(strings)
 add_subdirectory(templ)
+add_subdirectory(term)
 add_subdirectory(time)
 add_subdirectory(virt)
 
