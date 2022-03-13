@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(cpp)
 
+add_subdirectory(async)
 add_subdirectory(bitwise)
 add_subdirectory(classes)
 add_subdirectory(collections)
