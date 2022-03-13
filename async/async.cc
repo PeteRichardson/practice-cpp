@@ -6,7 +6,7 @@
 #include "log.h"
 #include "perf.h"
 
-using std::cout, std::endl;
+using std::cout, std::endl, std::async;
 
 int DoSomething(char c) {
     std::default_random_engine dre(c);
@@ -19,24 +19,16 @@ int DoSomething(char c) {
     return c;
 }
 
-int func1() {
-    return DoSomething('-');
-}
-
-int func2() {
-    return DoSomething('.');
-}
-
 int main(int argc, char** argv) {
     Timer clock{};
     setup_console_logging(plog::debug);
     PLOGD << "Starting async";
     PLOGD << "func1() in background, func2() in foreground";
 
-    std::future<int> result1(std::async(func1));
-    int result2 = func2();
+    auto result1( async([] () { return DoSomething('-'); } ) );
+    auto result2( async([] () { return DoSomething('.'); } ) );
 
-    int result = result1.get() + result2;
+    int result = result1.get() + result2.get();
 
     cout << "\nResult of func1('-') + func2('.') = " << result << endl;
     
