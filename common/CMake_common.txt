@@ -1,5 +1,6 @@
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 
+set (CMAKE_EXPORT_COMPILE_COMMANDS true)
 set (CMAKE_BUILD_TYPE debug)
 if(APPLE)
 add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
