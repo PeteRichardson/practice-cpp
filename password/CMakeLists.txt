@@ -15,9 +15,9 @@ add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
 )
 endif()
 
-add_executable             (        generate_wordlist generate_wordlist.cc )
-target_include_directories (        generate_wordlist PUBLIC "../common" "../plog/include" )
-target_link_libraries      (        generate_wordlist common )
+add_executable             (        generate_wordlist generate_wordlist.cc)
+target_include_directories (        generate_wordlist PUBLIC "../common")
+target_link_libraries      (        generate_wordlist common plog)
 target_compile_features    (        generate_wordlist PUBLIC cxx_std_20)
 if(APPLE)
 add_custom_command(TARGET generate_wordlist POST_BUILD

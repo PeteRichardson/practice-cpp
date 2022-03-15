@@ -2,18 +2,24 @@ cmake_minimum_required(VERSION 3.10)
 
 project(cpp)
 
+set(CMAKE_INSTALL_PREFIX /Users/pete/bin2)
+
 include(FetchContent)
 FetchContent_Declare(
     cpp-terminal
     GIT_REPOSITORY https://github.com/jupyter-xeus/cpp-terminal.git
     GIT_TAG        d22ea37b16663906f437a6193c81607eca3ce30d
 )
+FetchContent_Declare(
+    plog
+    GIT_REPOSITORY https://github.com/SergiusTheBest/plog.git
+    GIT_TAG        1.1.6        # release 1.1.6
+    )
 
 FetchContent_MakeAvailable(cpp-terminal)
-
+FetchContent_MakeAvailable(plog)
 
 add_subdirectory(common)
-add_subdirectory(plog)
 add_subdirectory(async)
 add_subdirectory(bitwise)
 add_subdirectory(classes)
