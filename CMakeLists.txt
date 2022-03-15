@@ -2,8 +2,17 @@ cmake_minimum_required(VERSION 3.10)
 
 project(cpp)
 
+include(FetchContent)
+FetchContent_Declare(
+    cpp-terminal
+    GIT_REPOSITORY https://github.com/jupyter-xeus/cpp-terminal.git
+    GIT_TAG        d22ea37b16663906f437a6193c81607eca3ce30d
+)
+
+FetchContent_MakeAvailable(cpp-terminal)
+
+
 add_subdirectory(common)
-add_subdirectory(cpp-terminal)
 add_subdirectory(plog)
 add_subdirectory(async)
 add_subdirectory(bitwise)

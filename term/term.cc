@@ -5,6 +5,6 @@
 
 int main(int argc, char** argv) {
     setup_console_logging(plog::debug);
-    PLOGN << Term::color(Term::fg::yellow) << "Hello, World!";
+    PLOGN << Term::color(Term::fg::yellow) << "Hello, World! (this should be yellow!)";
     PLOGD << "This shouldn't be yellow (if plot or cpp-terminal reset the terminal colors automatically)";
 }
