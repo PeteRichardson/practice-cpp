@@ -7,8 +7,6 @@ add_library(${PROJECT_NAME} STATIC
     "common/person.cc"
 )
 
-include_directories(
-    "../plog/include"
-    )
+target_link_libraries(${PROJECT_NAME} plog)
 
 include(../CMake_common.txt)   # sets stdc++20, debug, etc
