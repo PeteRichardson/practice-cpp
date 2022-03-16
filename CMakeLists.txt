@@ -15,9 +15,15 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/SergiusTheBest/plog.git
     GIT_TAG        1.1.6        # release 1.1.6
     )
-
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest
+    GIT_TAG        release-1.11.0
+)
+    
 FetchContent_MakeAvailable(cpp-terminal)
 FetchContent_MakeAvailable(plog)
+FetchContent_MakeAvailable(googletest)
 
 add_subdirectory(common)
 add_subdirectory(async)
