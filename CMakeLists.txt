@@ -1,8 +1,10 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.18)
 
 project(cpp)
 
-set(CMAKE_INSTALL_PREFIX /Users/pete/bin2)
+set(CMAKE_INSTALL_PREFIX "/Users/pete/bin2")
+option(CPPTERMINAL_ENABLE_TESING "Skip cpp-terminal test code" OFF)
+option(CMAKE_VERBOSE_MAKEFILE "Show commands while building" ON)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -24,6 +26,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cpp-terminal)
 FetchContent_MakeAvailable(plog)
 FetchContent_MakeAvailable(googletest)
+
+enable_testing()
 
 add_subdirectory(common)
 add_subdirectory(async)
