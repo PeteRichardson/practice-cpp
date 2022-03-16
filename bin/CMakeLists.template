@@ -4,11 +4,10 @@ project(replace-me)
 
 add_executable(${PROJECT_NAME}
     "${PROJECT_NAME}.cc"
-    #"../common/log.cc"
 )
 
-# include_directories("../common" "../plog/include")
+# include_directories("../common")
+# target_link_libraries(${PROJECT_NAME} common plog ncurses)
 # add_compile_options("-Wpadded")
-# target_link_libraries(${PROJECT_NAME} -lncurses)
 
 include(../CMake_common.txt)   # sets stdc++20, debug, etc
