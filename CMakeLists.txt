@@ -53,6 +53,9 @@ add_subdirectory(strings)
 add_subdirectory(templ)
 add_subdirectory(term)
 add_subdirectory(time)
+if(NOT APPLE)
+    add_subdirectory(views)   # Views won't compile with clang
+endif()
 add_subdirectory(virt)
 
 
