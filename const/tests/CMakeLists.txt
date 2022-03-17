@@ -4,15 +4,15 @@ set(CMAKE_CXX_STANDARD 20)
 
 enable_testing()
 
-add_executable( const_test
+add_executable( const_tests
     bankaccount_tests.cc
     ../bank_account.cc
 )
 
-target_link_libraries( const_test
+target_link_libraries( const_tests
     gtest_main
     plog
 )
 
 include(GoogleTest)
-gtest_discover_tests(const_test)
+gtest_discover_tests( const_tests )
