@@ -1,8 +1,9 @@
-#include <iostream>
-#include <future>
-#include <chrono>
-#include <random>
 #include <array>
+#include <chrono>
+#include <future>
+#include <iostream>
+#include <mutex>
+#include <random>
 
 #include <common/log.h>
 #include <common/perf.h>
@@ -10,26 +11,27 @@
 
 using std::cout, std::endl, std::async;
 
-int DoSomething(char c) {
+int DoSomething(int n) {
     std::random_device rd{};
 
-    for (int i=0; i<10; ++i){
+    for (int i=0; i<10; ++i) {
         std::this_thread::sleep_for(std::chrono::milliseconds(rd() % 1000));
-        std::cout.put(c).flush();
+        std::cout << std::hex << std::noshowbase << std::setw(2) << n << '\n';
+        std::cout.flush();
     }
-    return c;
+    return n;
 }
 
 int main(int argc, char** argv) {
     Timer clock{};
     setup_console_logging(plog::debug);
 
-    const int n = 10;
+    const int n = 50;
     PLOGD << "Starting async on " << n << " background threads.";
 
     std::array<std::future<int>, n> results{};
     for (auto i=0; i < n; ++i) {
-        results[i] = async([=] () { return DoSomething(i+0x30); } );  // pass in chars '0'-'9' (i.e. 0x30, 0x31...0x39)
+        results[i] = async([=] () { return DoSomething(i); } );
     }
 
     int result{};
@@ -37,7 +39,7 @@ int main(int argc, char** argv) {
         result += results[i].get();
     }
 
-    cout << "\nSum of return values from " << n << " background threads = " << result << endl;
+    cout << std::dec << std::setw(3) << "\nSum of return values from " << n << " background threads = " << result << endl;
     
     clock.tock();
     PLOGD << "Ending async.  Runtime " << clock.duration().count() << "ms";
