@@ -5,9 +5,13 @@
 #include <mutex>
 #include <random>
 
+// On linux we can use c++20 std::osyncstream to wrap cout and make sure the output is 
+// not interleaved.   On Mac (for now), <syncstream> isn't available, so use a mutex
+// and lock_guard.
+// TODO:  What about Windows?
 #if defined(__unix__) 
 #include <syncstream>
-#elif defined(__APPLE__) && defined(__MACH__) // Apple OSX and iOS (Darwin)
+#else
 std::mutex coutMutex{};
 #endif
 
@@ -23,16 +27,14 @@ int DoSomething(int n) {
     for (int i=0; i<10; ++i) {
         std::this_thread::sleep_for(std::chrono::milliseconds(rd() % 1000));
 
-        // On linux we can use c++20 std::osyncstream to wrap cout and make sure the output is 
-        // not interleaved.   On Mac (for now), <syncstream> isn't available, so use a mutex
-        // and lock_guard.
-        // TODO:  What about Windows?
+// Use different methods to avoid interleaved output.  See comment near #includes for details
 #if defined(__unix__) 
-        std::osyncstream(std::cout) << std::hex << std::noshowbase << std::setw(2) << n << std::endl;
-#elif defined(__APPLE__) && defined(__MACH__) // Apple OSX and iOS (Darwin)
+        auto & out = std::osyncstream(std::cout)
+#else
         std::lock_guard<std::mutex> coutLock(coutMutex);
-        std::cout << std::hex << std::noshowbase << std::setw(2) << n << std::endl;
+        auto & out = std::cout;
 #endif
+        out << std::hex << std::noshowbase << std::setw(2) << n << std::endl;
     }
     return n;
 }
