@@ -12,7 +12,24 @@
             },
             "detail": "create new cpp project",
             "problemMatcher": []
+        },
+        {
+            "type": "process",
+            "label": "hopper",
+            "command": "hopperv4",
+            "args": [
+                "-a",
+                "-l", "Mach-O",
+                "--aarch64",
+                "-e","${workspaceFolder}/build/${relativeFileDirname}/${relativeFileDirname}"
+            ],
+            "group": {
+                "kind": "other"
+            },
+            "detail": "open Hopper Disassembler",
+            "problemMatcher": []
         }
+
     ],
     "inputs": [
         {
