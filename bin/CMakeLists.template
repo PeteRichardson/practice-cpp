@@ -7,7 +7,7 @@ add_executable(${PROJECT_NAME}
 )
 
 # include_directories("../common")
-# target_link_libraries(${PROJECT_NAME} common plog ncurses)
+# target_link_libraries(${PROJECT_NAME} common ncurses)
 # add_compile_options("-Wpadded")
 
 include(../CMake_common.txt)   # sets stdc++20, debug, etc

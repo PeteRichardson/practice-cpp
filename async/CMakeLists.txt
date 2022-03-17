@@ -7,6 +7,6 @@ add_executable(${PROJECT_NAME}
 )
 
 include_directories("../common")
-target_link_libraries(${PROJECT_NAME} common plog)
+target_link_libraries(${PROJECT_NAME} common)
 
 include(../CMake_common.txt)   # sets stdc++20, debug, etc

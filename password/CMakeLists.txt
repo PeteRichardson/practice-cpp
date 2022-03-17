@@ -17,7 +17,7 @@ endif()
 
 add_executable             (        generate_wordlist generate_wordlist.cc)
 target_include_directories (        generate_wordlist PUBLIC "../common")
-target_link_libraries      (        generate_wordlist common plog)
+target_link_libraries      (        generate_wordlist common)
 target_compile_features    (        generate_wordlist PUBLIC cxx_std_20)
 if(APPLE)
 add_custom_command(TARGET generate_wordlist POST_BUILD

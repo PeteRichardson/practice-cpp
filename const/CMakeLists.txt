@@ -8,7 +8,7 @@ add_executable(${PROJECT_NAME}
 )
 
 include_directories("../common")
-target_link_libraries(${PROJECT_NAME} common plog)
+target_link_libraries(${PROJECT_NAME} common)
 
 add_subdirectory(tests)
 
