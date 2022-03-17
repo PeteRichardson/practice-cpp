@@ -31,7 +31,7 @@ TEST(BankAccountTests, Withdraw) {
     EXPECT_EQ(checking.getBalance(), 49.00);
 }
 
-TEST(BankAccountTests, Withdraw_Negative) {
+TEST(BankAccountTests, WithdrawNegative) {
     BankAccount checking { BankAccount(1, 100.00, "Pete")};
     auto balance_before = checking.getBalance();
     checking.withdraw(-23.75);
