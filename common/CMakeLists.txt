@@ -9,4 +9,6 @@ add_library(${PROJECT_NAME} STATIC
 
 target_link_libraries(${PROJECT_NAME} plog)
 
+add_subdirectory(tests)
+
 include(../CMake_common.txt)   # sets stdc++20, debug, etc

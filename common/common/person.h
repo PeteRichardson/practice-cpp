@@ -12,6 +12,8 @@ public:
     unsigned int age_{};
     char gender_{};
 
+    const unsigned int kOldAge = 40;
+
     Person(string name, unsigned int age, char gender, string ssNumber={});
     Person(string name);
     Person() {};
@@ -27,6 +29,7 @@ public:
     operator string() const;
 
     string GetSSNumber();
+    bool IsOld() { return age_ > kOldAge; }
     static string ClassName();
 
 private:
