@@ -1,9 +1,10 @@
 #include <array>
 #include <iostream>
+#include <memory>
 #include <span>
-#include <vector>
-#include <string>
 #include <string_view>
+#include <string>
+#include <vector>
 
 using std::cout, std::endl, std::string, std::vector;
 using strvec = std::vector<std::string_view>;
