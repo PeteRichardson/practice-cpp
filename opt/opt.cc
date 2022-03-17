@@ -1,7 +1,18 @@
+#include <array>
 #include <iostream>
 #include <span>
+#include <vector>
+#include <string>
+#include <string_view>
 
-using std::cout, std::endl;
+using std::cout, std::endl, std::string, std::vector;
+using strvec = std::vector<std::string_view>;
+
+void dump(std::span<std::string_view> list) {
+    for (auto item: list) {
+		cout << item << " is " <<  item.length() << " chars long." << endl;
+    }
+}
 
 int main(int argc, char* argv[]) {
 
@@ -10,12 +21,19 @@ int main(int argc, char* argv[]) {
 		return(EXIT_FAILURE);
 	}
 
-    // put args into a std::span<char*>.   Not really necessary.
-	auto args = std::span<char*>{++argv, static_cast<size_t>(--argc)};
-    for (auto arg : args) {
-		cout << arg << " is " << static_cast<std::string_view>(arg).length() << " chars long." << endl;
-	}
-    cout << "argv[0] = " << argv[0] << endl;
-    cout << "args[1] = " << args[1] << endl;
+    // args
+    auto args = strvec(argv+1, argv+argc);
+    dump(args);
+
+    // misc cstrings
+    strvec names{"pete", "wendy", "katherine", "bella"};
+    dump (names);
+
+    auto pets = std::array<std::string_view, 5>{"Bella", "Newton", "Zoe", "Hannibal", "Ducky"};
+    pets[3] = *std::move(std::make_unique<std::string_view>("Axlatl"));
+    dump (pets);
+
+    cout << std::hex << &pets[3] << std::dec << endl;
+
 	return(EXIT_SUCCESS);
 }
