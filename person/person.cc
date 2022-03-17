@@ -3,6 +3,7 @@
 #include <memory>
 #include <array>
 
+#include <common/log.h>
 #include <common/dbg.h>
 #include <common/person.h>
 
@@ -10,6 +11,8 @@ using std::cout, std::endl, std::string;
 
 
 int main(int argc, char** argv) {
+    setup_console_logging(plog::debug);
+
     auto pete  = std::make_unique<Person>("Pete", 56, 'M');
     auto wendy = std::make_unique<Person>("Wendy", 55, 'F');
     auto katherine = std::make_unique<Person>("Katherine", 18, 'F');
@@ -17,14 +20,14 @@ int main(int argc, char** argv) {
     Person *george_p = new Person("George", 12, 'M');
     Person joe = Person("Joe", 25,'M');
 
-    cout << "*bella: (size " << sizeof *bella << ")\n" << memdump(*bella);
+    PLOGD << "*bella: (size " << sizeof *bella << ")\n" << memdump(*bella);
     
-    cout << ">>>>>>>>>>>" << endl;
+    PLOGD << ">>>>>>>>>>>";
     auto george2 = george_p;
     auto george_sp = std::shared_ptr<Person>(george_p);
     auto george3 = george_sp;
     joe = *george_p;
-    cout << "<<<<<<<<<<<" << endl;
+    PLOGD << "<<<<<<<<<<<";
 
     std::array<std::unique_ptr<Person>, 4> people{};
     try {
@@ -34,9 +37,10 @@ int main(int argc, char** argv) {
         people.at(3) = std::move(bella);
         people.at(4) = std::make_unique<Person>(*george_p);  //Should throw here...
     } catch (const std::out_of_range& e) {
-        std::cerr << "# CATCH: I guess we're done! " << e.what() << '\n';
+        PLOGW << "# CATCH: I guess we're done! " << e.what();
     }
     for (const auto &p: people) {
-        cout << *p << endl;
+        cout << *p << '\n';
     }
+    cout.flush();
 }
