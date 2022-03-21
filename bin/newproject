@@ -11,7 +11,7 @@ pushd ${newproject}
 cp ../bin/CMakeLists.template CMakeLists.txt
 sed -i '' "s/replace-me/${newproject}/" CMakeLists.txt
 cp ../bin/hello.cc ${newproject}.cc
-cmake -G Ninja -S . -B build
+cmake -S . -B build
 code -r ${newproject}.cc
 
 popd $newproject

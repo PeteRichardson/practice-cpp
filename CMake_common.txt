@@ -5,9 +5,13 @@ set (CMAKE_EXPORT_COMPILE_COMMANDS true)
 get_target_property(target_type ${PROJECT_NAME} TYPE)
 if (target_type STREQUAL "EXECUTABLE")
     if(APPLE)
-    add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
-        COMMAND dsymutil "${PROJECT_NAME}" 
-        WORKING_DIRECTORY "${fileDirname}"
-    )
+        if("${CMAKE_GENERATOR}" STREQUAL "Xcode")
+            set_target_properties(${PROJECT_NAME} PROPERTIES XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym")
+        else()
+            add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
+                COMMAND dsymutil "${PROJECT_NAME}" 
+                WORKING_DIRECTORY "${fileDirname}"
+            )
+        endif()
     endif()
 endif ()
