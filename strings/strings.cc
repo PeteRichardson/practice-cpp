@@ -19,6 +19,11 @@ void my_str_function(char* p) {
 }
 
 int main(int argc, char **argv) {
+    if (argc < 2) {
+        cout << "# usage: " << argv[0] << "<string>" << endl;
+        return 1;
+    }
+
     // Test 1:  just a string literal.  which func will it match?
     // NOTE:  gcc spits out: "warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]"
     #pragma GCC diagnostic push
