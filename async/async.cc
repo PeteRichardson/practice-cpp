@@ -29,7 +29,7 @@ int DoSomething(int n) {
 
 // Use different methods to avoid interleaved output.  See comment near #includes for details
 #if defined(__unix__) 
-        auto & out = std::osyncstream(std::cout)
+        auto out = std::osyncstream(std::cout)
 #else
         std::lock_guard<std::mutex> coutLock(coutMutex);
         auto & out = std::cout;
