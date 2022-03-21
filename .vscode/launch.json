@@ -8,7 +8,7 @@
             "name": "Run current target",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/build/${relativeFileDirname}/${relativeFileDirname}",
+            "program": "${workspaceFolder}/build/${relativeFileDirname}/Debug/${relativeFileDirname}",
             "args": ["arg1", "arg2"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build/${relativeFileDirname}",
