@@ -44,7 +44,7 @@ add_custom_command(OUTPUT "${PROJECT_BINARY_DIR}/podofo.out"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND podofotxtextract hardin-tragedy.pdf > "${PROJECT_BINARY_DIR}/podofo.out"
     COMMAND podofotxtextract Origin_of_Species.pdf >> "${PROJECT_BINARY_DIR}/podofo.out"
-    COMMAND podofotxtextract Music-Theory-Composition-Counterpoint.pdf >> "${PROJECT_BINARY_DIR}/"
+    COMMAND podofotxtextract Music-Theory-Composition-Counterpoint.pdf >> "${PROJECT_BINARY_DIR}/podofo.out"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/hardin-tragedy.pdf"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/Origin_of_Species.pdf"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}//Music-Theory-Composition-Counterpoint.pdf"
