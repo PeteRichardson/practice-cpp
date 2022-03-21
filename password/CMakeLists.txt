@@ -42,9 +42,9 @@ add_custom_command(OUTPUT words.h
 
 add_custom_command(OUTPUT "${PROJECT_BINARY_DIR}/podofo.out"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND /opt/homebrew/bin/podofotxtextract hardin-tragedy.pdf > "${PROJECT_BINARY_DIR}/podofo.out"
-    COMMAND /opt/homebrew/bin/podofotxtextract Origin_of_Species.pdf >> "${PROJECT_BINARY_DIR}/podofo.out"
-    COMMAND /opt/homebrew/bin/podofotxtextract Music-Theory-Composition-Counterpoint.pdf >> "${PROJECT_BINARY_DIR}/podofo.out"
+    COMMAND podofotxtextract hardin-tragedy.pdf > "${PROJECT_BINARY_DIR}/podofo.out"
+    COMMAND podofotxtextract Origin_of_Species.pdf >> "${PROJECT_BINARY_DIR}/podofo.out"
+    COMMAND podofotxtextract Music-Theory-Composition-Counterpoint.pdf >> "${PROJECT_BINARY_DIR}/"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/hardin-tragedy.pdf"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/Origin_of_Species.pdf"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}//Music-Theory-Composition-Counterpoint.pdf"
