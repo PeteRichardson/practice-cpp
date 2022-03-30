@@ -18,17 +18,15 @@ public:
     Person(string name);
     Person() {};
 
-    Person(const Person& p);    // Copy constructor
-    Person& operator=(const Person&);  // Assignment
-
-    // Person(const Person&&);
-    // Person& operator=(const Person&); // Copy Assignment?
-
+    Person(const Person& p);            // Copy constructor
+    Person(Person&& p);                 // Move constructor
+    Person& operator=(const Person&);   // Copy Assignment
+    Person& operator=( Person&&);       // Move Assignment?
     ~Person();
 
     operator string() const;
 
-    string GetSSNumber();
+    string GetSSNumber() const;
     bool IsOld() { return age_ > kOldAge; }
     static string ClassName();
 

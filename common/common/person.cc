@@ -9,29 +9,54 @@ using std::cout, std::endl, std::string;
 
 Person::Person(string name, unsigned int age, char gender, string ssNumber) 
     : name_{name}, age_{age}, gender_{gender}, ssNumber_{ssNumber} {
-    // cout << "# Created Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    cout << "#      CONSTRUCTOR Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
 }
 
 // Copy constructor
 Person::Person(const Person& p) :
     name_{p.name_}, age_{p.age_}, gender_{p.gender_} {
-    cout << "# Copied Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    cout << "# COPY constructor Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
 }
 
-// Assignment
+// Move constructor
+Person::Person(Person&& p) :
+    name_{std::move(p.name_)}, age_{std::move(p.age_)}, gender_{std::move(p.gender_)}
+{
+    cout << "# MOVE constructor Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+
+}
+ 
+// Copy assignment
 Person& Person::operator=(const Person& rhs) {
-    cout << "# (PRE) Assigned Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    cout << "# (PRE) COPY Assignment Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
     if (&rhs != this) {
         this->name_ = rhs.name_;
         this->age_ = rhs.age_;
         this->gender_ = rhs.gender_;
     }
-    cout << "# (POST) Assigned Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    cout << "# (POST) COPY Assignment Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
     return *this;
-}  
+}
+
+// Move assignment
+Person& Person::operator=( Person&& rhs) {
+    cout << "# (PRE) MOVE Assignment Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    if (&rhs != this) {
+        this->name_ = std::move(rhs.name_);
+        this->age_ = (rhs.age_);
+        this->gender_ = (rhs.gender_);
+
+        rhs.name_="";
+        rhs.age_=0;
+        rhs.gender_='\0';
+
+    }
+    cout << "# (POST) MOVE Assignment Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    return *this;
+}
 
 Person::~Person() {
-    // cout << "# Deleted Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
+    cout << "# DELETED Person@"<< this << " (" << name_ << ", " << age_ << ", " << gender_ << ")" << endl;
 }
 
 Person::operator string() const { 
@@ -49,7 +74,10 @@ Person::operator string() const {
 }
 
 std::ostream& operator<<(std::ostream& out, Person& p) {
-    out << static_cast<std::string>(p);
+    if (p.name_.length() == 0) 
+        out << "non-person";
+    else
+        out << static_cast<std::string>(p);
     return out;
 }
 
@@ -100,7 +128,7 @@ Person::Person(string name) {
     }
 }
 
-string Person::GetSSNumber() {
+string Person::GetSSNumber() const {
     return ssNumber_;
 }
 
