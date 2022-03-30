@@ -29,6 +29,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+add_subdirectory(accumulate)
 add_subdirectory(common)
 add_subdirectory(async)
 add_subdirectory(bitwise)
