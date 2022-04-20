@@ -22,10 +22,16 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/google/googletest
     GIT_TAG        release-1.11.0
 )
-    
+FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+    GIT_TAG        8.1.1
+)
+            
 FetchContent_MakeAvailable(cpp-terminal)
 FetchContent_MakeAvailable(plog)
 FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(fmt)
 
 enable_testing()
 
@@ -33,6 +39,7 @@ add_subdirectory(accumulate)
 add_subdirectory(common)
 add_subdirectory(async)
 add_subdirectory(bitwise)
+add_subdirectory(byte)
 add_subdirectory(classes)
 add_subdirectory(collections)
 add_subdirectory(const)
