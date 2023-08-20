@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fmt/core.h>
 
 int main(int argc, char** argv) {
 
@@ -6,5 +7,5 @@ int main(int argc, char** argv) {
     auto fish_count = 672;
     auto all_fish_length = fish_length * fish_count;   // inches
 
-    std::cout << "I have " << all_fish_length << " inches of fish!" << std::endl;
+    fmt::print("I have {:.2f} inches of fish!\n", all_fish_length);
 }
