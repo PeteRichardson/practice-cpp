@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.28)
 
 project(cpp)
 
@@ -10,22 +10,22 @@ include(FetchContent)
 FetchContent_Declare(
     cpp-terminal
     GIT_REPOSITORY https://github.com/jupyter-xeus/cpp-terminal.git
-    GIT_TAG        d22ea37b16663906f437a6193c81607eca3ce30d
+    GIT_TAG        cafdfac96aec894ec101d4298bee5c1c616615e3
 )
 FetchContent_Declare(
     plog
     GIT_REPOSITORY https://github.com/SergiusTheBest/plog.git
-    GIT_TAG        1.1.6        # release 1.1.6
+    GIT_TAG        1.1.10
     )
 FetchContent_Declare(
     googletest
     GIT_REPOSITORY https://github.com/google/googletest
-    GIT_TAG        release-1.11.0
+    GIT_TAG        v1.14.0
 )
 FetchContent_Declare(
     fmt
     GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-    GIT_TAG        10.1.0
+    GIT_TAG        10.2.1
 )
 
 FetchContent_MakeAvailable(cpp-terminal)
